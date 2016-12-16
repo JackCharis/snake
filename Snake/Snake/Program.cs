@@ -12,59 +12,39 @@ namespace Snake
         static void Main(string[] args)
         {
 
-            Console.SetBufferSize(150,40);
-            
+            Console.SetBufferSize(150, 40);
+
 
             //Отрисовка рамки
 
             HorizontalLine upLine = new HorizontalLine(0, 78, 0, '+');
             HorizontalLine downLine = new HorizontalLine(0, 78, 23, '+');
-            VerticalLine leftLine = new VerticalLine(0, 23, 0, '+');        
+            VerticalLine leftLine = new VerticalLine(0, 23, 0, '+');
             VerticalLine rightLine = new VerticalLine(0, 23, 78, '+');
-            
+
             upLine.Draw();
             downLine.Draw();
             leftLine.Draw();
             rightLine.Draw();
 
             Point p = new Point(4, 5, '*');
-            Snake snake = new Snake(p,4,Direction.RIGHT);
+            Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Draw();
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
-            Thread.Sleep(300);
-            snake.Move();
 
-            Console.ReadLine();
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                }
+                Thread.Sleep(50);
+                snake.Move();
+            }
         }
     }
 }
 
 
+
+     
