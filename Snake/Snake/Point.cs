@@ -39,21 +39,25 @@ namespace Snake
                 {
                     x = x - offset;
                 }
-            else
-            {
-                if (direction == Direction.UP)
+                else
                 {
-                    y = y - offset;
-                }
-            else
-            {
-                if (direction == Direction.DOWN)
-                {
-                    y = y + offset;
+                    if (direction == Direction.UP)
+                    {
+                        y = y - offset;
+                    }
+                    else
+                    {
+                        if (direction == Direction.DOWN)
+                        {
+                            y = y + offset;
+                        }
+                    }
                 }
             }
-            }
-            }  
+        }
+         public bool IsHit(Point p)
+        {
+            return p.x == this.x && p.y == this.y;
         }
 
         public void Draw()
